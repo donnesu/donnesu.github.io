@@ -43,15 +43,15 @@ export default function Projects() {
         {!isLoading && displayedPosts.map((post) => (
           <CardHelper
             key={post.slug}
-            description = {post.description}
-            title = {post.title}
-            image = {imageMap[post.image]}
-            link = {post.slug}
+            description={post.description}
+            title={post.title}
+            image={imageMap[post.image]}
+            link={post.slug}
           />
         ))}
       </div>
       <div className='links'>
-        <a href="https://github.com/snowbawler?tab=repositories" target='_blank'>
+        <a href="https://github.com/donnesu?tab=repositories" target='_blank'>
           <img className='link' src={gitHubIcon} alt="GitHub" />
         </a>
         <a href={resumePDF} target='_blank'>

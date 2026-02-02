@@ -48,7 +48,7 @@ const Home = () => {
             <Scroll/>
             {showScrollHint && (
                 <div className="scroll-hint" aria-hidden="true">
-                    Scroll up
+                    Scroll to explore
                 </div>
             )}
         </div>
