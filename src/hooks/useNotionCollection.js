@@ -17,11 +17,39 @@ export function useNotionCollection(collectionId) {
 
     fetchNotionCollection(collectionId)
       .then((data) => {
+        const normalizedRows = (() => {
+          if (Array.isArray(data)) {
+            return data;
+          }
+
+          if (Array.isArray(data?.results)) {
+            return data.results;
+          }
+
+          if (Array.isArray(data?.rows)) {
+            return data.rows;
+          }
+
+          if (Array.isArray(data?.table)) {
+            return data.table;
+          }
+
+          return null;
+        })();
+
+        if (!normalizedRows) {
+          throw new Error("Received invalid Notion collection payload");
+        }
+
         if (!isMounted) {
           return;
         }
 
-        setRows(data);
+        if (import.meta.env.DEV) {
+          console.debug("Loaded Notion collection rows", normalizedRows);
+        }
+
+        setRows(normalizedRows);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -40,4 +68,3 @@ export function useNotionCollection(collectionId) {
 
   return { rows, isLoading, error };
 }
-

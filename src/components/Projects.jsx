@@ -26,20 +26,14 @@ const imageMap = {
 export default function Projects() {
   const { rows: posts, isLoading, error } = useNotionCollection(NOTION_BLOG_ID);
   const remotePosts = Array.isArray(posts) ? posts : [];
-  const shouldUseFallback = Boolean(error);
+  const shouldUseFallback = Boolean(error) || (!isLoading && remotePosts.length === 0);
   const displayedPosts = shouldUseFallback ? fallbackProjects : remotePosts;
-  const showEmptyState = !isLoading && !shouldUseFallback && remotePosts.length === 0;
 
   return (
     <div className='container'>
       <div className='title'>...and I make projects</div>
       <div className="card_container">
         {isLoading && <p className='card_loading'>Loading projects...</p>}
-        {showEmptyState && (
-          <p className='card_error' role='status'>
-            Failed to load projects. Please try again later.
-          </p>
-        )}
         {!isLoading && displayedPosts.map((post) => (
           <CardHelper
             key={post.slug}
