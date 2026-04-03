@@ -1,24 +1,17 @@
 
 import React from 'react';
 import "./pages.css"
-import banner from "../assets/ecocarbanner.png";
 import { Link } from "react-router-dom"
-import { useNotionRecordMap } from "../hooks/useNotionRecordMap";
-import NotionContent from "../components/notion/NotionContent";
-
-const NOTION_PAGE_ID = '2c7752a5762e80b68f2ef3204784624b';
-
-export default function NotionPage() {
-  const { recordMap, isLoading, error } = useNotionRecordMap(NOTION_PAGE_ID);
+export default function EcoCAR() {
 
   return (
-     <div className='crag'> 
+    <>
       <Link
         to="/"
         style={{
-          position: "fixed",   // or "absolute" if you want it relative to a container
+          position: "fixed",
           top: 20,
-          right: 20,           // <-- use right instead of left
+          right: 20,
           padding: "10px 15px",
           background: "#D6CEC8",
           color: "#000",
@@ -26,17 +19,22 @@ export default function NotionPage() {
           borderRadius: 5,
           boxShadow: "0 2px 4px rgba(0,0,0,.1)",
           fontSize: 16,
-          zIndex: 1000
+          zIndex: 1000,
         }}
       >
         Back
       </Link>
- 
-      <img src={banner} alt="Crags Banner" style={{top: "-2vw", left: "-2vw", maxWidth: '102vw', width: '102vw'}}></img>
-      <div className='parent' style={{ maxWidth: 768 }}>
-        {error && <p role="alert">Failed to load content. Please refresh.</p>}
-        {recordMap && !error && <NotionContent recordMap={recordMap} />}
+      <div>
+        <iframe
+          src="https://snowbawler.notion.site/ebd//2c7752a5762e80b68f2ef3204784624b"
+          title="EcoCAR"
+          width="100%"
+          height="100%"
+          className='notion-iframe notion-iframe--offset'
+          frameBorder="0"
+          allowFullScreen
+        />
       </div>
-    </div>
+    </>
   );
 }

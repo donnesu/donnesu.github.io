@@ -10,11 +10,8 @@ import imageD from '../assets/ecocarcard.png'
 import resumePDF from '../assets/Su_Donne_Resume_F2026.pdf'
 
 import React from 'react';
-import { useNotionCollection } from '../hooks/useNotionCollection';
 import fallbackProjects from '../data/projectsFallback.json';
 
-
-const NOTION_BLOG_ID = 'e75ae1c09cb347af9a12219825125a12';
 
 const imageMap = {
   "imageA": imageA,
@@ -24,17 +21,13 @@ const imageMap = {
 };
 
 export default function Projects() {
-  const { rows: posts, isLoading, error } = useNotionCollection(NOTION_BLOG_ID);
-  const remotePosts = Array.isArray(posts) ? posts : [];
-  const shouldUseFallback = Boolean(error) || (!isLoading && remotePosts.length === 0);
-  const displayedPosts = shouldUseFallback ? fallbackProjects : remotePosts;
+  const displayedPosts = fallbackProjects;
 
   return (
     <div className='container'>
       <div className='title'>...and I make projects</div>
       <div className="card_container">
-        {isLoading && <p className='card_loading'>Loading projects...</p>}
-        {!isLoading && displayedPosts.map((post) => (
+        {displayedPosts.map((post) => (
           <CardHelper
             key={post.slug}
             description={post.description}

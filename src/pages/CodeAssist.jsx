@@ -1,14 +1,7 @@
 import React from 'react';
 import "./pages.css"
-import banner from "../assets/codeassistbanner.png";
 import { Link } from "react-router-dom"
-import { useNotionRecordMap } from "../hooks/useNotionRecordMap";
-import NotionContent from "../components/notion/NotionContent";
-
-const NOTION_PAGE_ID = '280752a5762e805da1a6ddb111d31fe1';
-
-export default function NotionPage() {
-  const { recordMap, isLoading, error } = useNotionRecordMap(NOTION_PAGE_ID);
+export default function CodeAssist() {
 
   return (
      <> 
@@ -30,11 +23,15 @@ export default function NotionPage() {
       >
         Back
       </Link>
-      <img src={banner} alt="BridgeBill Banner" style={{maxWidth: '100vw', width: '100vw'}}></img>
-      <div className='parent' style={{ maxWidth: 768 }}>
-        {error && <p role="alert">Failed to load content. Please refresh.</p>}
-        {recordMap && !error && <NotionContent recordMap={recordMap} />}
-      </div>
+        <iframe
+          src="https://snowbawler.notion.site/ebd//280752a5762e805da1a6ddb111d31fe1"
+          title="CodeAssist"
+          width="100%"
+          height="100%"
+          className='notion-iframe notion-iframe--offset'
+          frameBorder="0"
+          allowFullScreen
+        />
     </>
   );
 }

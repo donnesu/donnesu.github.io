@@ -1,14 +1,7 @@
 import React from 'react';
 import "./pages.css"
-import banner from "../assets/cragbanner.png";
 import { Link } from "react-router-dom"
-import { useNotionRecordMap } from "../hooks/useNotionRecordMap";
-import NotionContent from "../components/notion/NotionContent";
-
-const NOTION_PAGE_ID = '47e7ee996c284d54a4913cdd62ffdfe3';
-
-export default function NotionPage() {
-  const { recordMap, isLoading, error } = useNotionRecordMap(NOTION_PAGE_ID);
+export default function LonghornRacing() {
 
   return (
      <div className='crag'> 
@@ -30,12 +23,15 @@ export default function NotionPage() {
       >
         Back
       </Link>
- 
-      <img src={banner} alt="Crags Banner" style={{top: "-2vw", left: "-2vw", maxWidth: '102vw', width: '102vw'}}></img>
-      <div className='parent' style={{ maxWidth: 768 }}>
-        {error && <p role="alert">Failed to load content. Please refresh.</p>}
-        {recordMap && !error && <NotionContent recordMap={recordMap} />}
-      </div>
+        <iframe
+          src="https://snowbawler.notion.site/ebd//47e7ee996c284d54a4913cdd62ffdfe3"
+          title="Longhorn Racing"
+          width="100%"
+          height="100%"
+          className='notion-iframe notion-iframe--offset'
+          frameBorder="0"
+          allowFullScreen
+        />
     </div>
   );
 }

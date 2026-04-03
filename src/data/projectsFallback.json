@@ -1,5 +1,11 @@
 [
   {
+    "slug": "/EcoCAR",
+    "title": "EcoCAR",
+    "description": "Perception Autonomous Driving",
+    "image": "imageD"
+  },
+  {
     "slug": "/LonghornRacing",
     "title": "Longhorn Racing",
     "description": "Simulation and Validation",
@@ -10,12 +16,6 @@
     "title": "CodeAssist",
     "description": "LLM-Powered Grading Feedback",
     "image": "imageC"
-  },
-  {
-    "slug": "/EcoCAR",
-    "title": "EcoCAR",
-    "description": "Perception Autonomous Driving",
-    "image": "imageD"
   },
   {
     "slug": "/Muck",
